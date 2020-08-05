@@ -1,4 +1,4 @@
-package com.shehzabahammad.workout_timer.splash
+package com.shehzabahammad.workout_timer.splash.screen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.shehzabahammad.workout_timer.R
-import com.shehzabahammad.workout_timer.home.HomeActivity
+import com.shehzabahammad.workout_timer.home.screen.HomeActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
