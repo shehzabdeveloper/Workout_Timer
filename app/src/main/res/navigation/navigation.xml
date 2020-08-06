@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.shehzabahammad.workout_timer.home.screen.HomeFragment"
+        android:name="com.shehzabahammad.workout_timer.home.screen.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

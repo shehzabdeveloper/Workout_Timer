@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".home.screen.HomeActivity"
+            android:name=".home.screen.activity.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".splash.screen.SplashScreenActivity"
+            android:name=".splash.screen.activity.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

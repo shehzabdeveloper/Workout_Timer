@@ -1,4 +1,4 @@
-package com.shehzabahammad.workout_timer.home.screen
+package com.shehzabahammad.workout_timer.home.screen.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
