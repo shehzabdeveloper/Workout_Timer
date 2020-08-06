@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
             updateButtons()
             Toast.makeText(context, "Clicked Stop", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun updateButtons() {
