@@ -1,17 +1,18 @@
 package com.shehzabahammad.workout_timer.home.screen.fragment
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
-import android.graphics.Color
+import android.graphics.*
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.shehzabahammad.workout_timer.R
 import com.shehzabahammad.workout_timer.home.model.WorkoutSet
+import com.shehzabahammad.workout_timer.util.Util.appendZero
 import kotlinx.android.synthetic.main.fragment_home.*
+
 
 class HomeFragment : Fragment() {
     enum class TimerState {
@@ -24,6 +25,7 @@ class HomeFragment : Fragment() {
     private var currentState = TimerState.STOP_STATE
     private var secondsRemaining = 0L
     private var flag = 0
+    private var workoutRound = 0
 
     private val workout: ArrayList<WorkoutSet> = ArrayList()
 
@@ -37,28 +39,30 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tvRound.text = getString(R.string.round, workoutRound)
         onTimerFinished()
 
         fabPlay.setOnClickListener {
             if (flag == 0) dummy()
-            progressBar.visibility=View.VISIBLE
-            progressBar.isIndeterminate = true
-            progressBar.indeterminateDrawable.setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.MULTIPLY)
+            progressBar.visibility = View.VISIBLE
+
             currentState = TimerState.START_STATE
-            tvTitle.text = workout[0].workoutTitle
             startTimer(workout[0])
             updateButtons()
         }
         fabPause.setOnClickListener {
             flag = 1
+            workoutRound--
             currentState = TimerState.PAUSE_STATE
             timer.cancel()
             updateButtons()
         }
         fabStop.setOnClickListener {
             flag = 0
+            workoutRound = 0
+            tvRound.text = getString(R.string.round, workoutRound)
             workout.clear()
-            progressBar.visibility=View.GONE
+            progressBar.visibility = View.GONE
             currentState = TimerState.STOP_STATE
             timer.cancel()
             onTimerFinished()
@@ -67,6 +71,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun startTimer(wrkSet: WorkoutSet) {
+        tvTitle.text = wrkSet.workoutTitle
+        if (wrkSet.workoutTitle == "Rest") {
+            progressBar.indeterminateDrawable.colorFilter = PorterDuffColorFilter(
+                Color.RED,
+                PorterDuff.Mode.SRC_ATOP
+            )
+        } else {
+            workoutRound++
+            tvRound.text = getString(R.string.round, workoutRound)
+            progressBar.indeterminateDrawable.colorFilter = PorterDuffColorFilter(
+                Color.GREEN,
+                PorterDuff.Mode.SRC_ATOP
+            )
+        }
+
         timer = object : CountDownTimer(
             if (secondsRemaining * 1000 != 0L) secondsRemaining * 1000 else wrkSet.timer * 1000,
             1000
@@ -74,9 +93,6 @@ class HomeFragment : Fragment() {
             override fun onFinish() {
                 workout.remove(wrkSet)
                 if (workout.isNotEmpty()) {
-//                    progressBar.progressTintList = ColorStateList.valueOf(Color.YELLOW)
-                    progressBar.setBackgroundColor(Color.YELLOW)
-                    tvTitle.text = workout[0].workoutTitle
                     startTimer(workout[0])
                 } else {
                     onTimerFinished()
@@ -84,7 +100,6 @@ class HomeFragment : Fragment() {
             }
 
             override fun onTick(millisUntilFinished: Long) {
-//                secondsRemaining = millisUntilFinished / 1000
                 secondsRemaining = (millisUntilFinished % 60000) / 1000
                 updateCountdownUI(millisUntilFinished)
             }
@@ -94,7 +109,9 @@ class HomeFragment : Fragment() {
     private fun onTimerFinished() {
         currentState = TimerState.STOP_STATE
         tvTitle.text = getString(R.string.cool_down)
-        progressBar.visibility=View.GONE
+        workoutRound = 0
+        tvRound.text = getString(R.string.round, workoutRound)
+        progressBar.visibility = View.GONE
         //set the length of the timer to be the one set in SettingsActivity
         //if the length was changed when the timer was running
         setNewTimerLength()
@@ -143,14 +160,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun appendZero(time: Long): String {
-        val timeString = time.toString()
-        return if (time < 10) "0$timeString" else timeString
-    }
     private fun dummy() {
-        workout.add(WorkoutSet("Pushup", 20))
-        workout.add(WorkoutSet("Rest", 10))
-        workout.add(WorkoutSet("Jump Jack", 20))
-        workout.add(WorkoutSet("Rest", 10))
+        workout.add(WorkoutSet("Pushup", 21))
+        workout.add(WorkoutSet("Rest", 11))
+        workout.add(WorkoutSet("Jump Jack", 21))
+        workout.add(WorkoutSet("Rest", 11))
     }
 }
