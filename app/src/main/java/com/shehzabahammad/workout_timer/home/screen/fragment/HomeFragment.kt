@@ -139,19 +139,26 @@ class HomeFragment : Fragment() {
         tvCountDown.text = timerText
     }
 
+    @SuppressLint("RestrictedApi")
     private fun updateButtons() {
         when (currentState) {
             TimerState.START_STATE -> {
+                fabPlay.visibility = View.GONE
+                fabPause.visibility = View.VISIBLE
                 fabPlay.isClickable = false
                 fabPause.isClickable = true
                 fabStop.isClickable = true
             }
             TimerState.PAUSE_STATE -> {
+                fabPlay.visibility = View.VISIBLE
+                fabPause.visibility = View.GONE
                 fabPlay.isClickable = true
                 fabPause.isClickable = false
                 fabStop.isClickable = true
             }
             TimerState.STOP_STATE -> {
+                fabPlay.visibility = View.VISIBLE
+                fabPause.visibility = View.GONE
                 fabPlay.isClickable = true
                 fabPause.isClickable = false
                 fabStop.isClickable = false
