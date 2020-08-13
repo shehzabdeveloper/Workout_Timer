@@ -4,4 +4,12 @@
     <dimen name="font_15">15dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_0">0dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_125">125dp</dimen>
+    <dimen name="font_48">48sp</dimen>
+    <dimen name="margin_250">250dp</dimen>
+    <dimen name="margin_64">64dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
 </resources>

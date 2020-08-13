@@ -11,12 +11,11 @@
         android:id="@+id/tvRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/margin_60"
         android:text="@string/round"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/font_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,10 +23,10 @@
         android:id="@+id/tvCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="@dimen/margin_125"
         android:text="@string/count_down"
         android:textColor="@android:color/black"
-        android:textSize="48sp"
+        android:textSize="@dimen/font_48"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRound" />
@@ -36,13 +35,13 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginBottom="@dimen/margin_60"
         android:text="@string/cool_down"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/font_24"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCountDown" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -50,8 +49,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:max="100"
-        android:minWidth="250dp"
-        android:minHeight="250dp"
+        android:minWidth="@dimen/margin_250"
+        android:minHeight="@dimen/margin_250"
         android:progress="0"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/tvCountDown"
@@ -60,22 +59,26 @@
         app:layout_constraintTop_toTopOf="@+id/tvCountDown" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="@dimen/margin_64"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
             android:clickable="true"
+            android:elevation="@dimen/margin_0"
             android:focusable="true"
-            android:outlineSpotShadowColor="@android:color/white"
             android:src="@drawable/ic_stop"
+            app:backgroundTint="@android:color/black"
+            app:borderWidth="@dimen/margin_2"
+            app:elevation="@dimen/margin_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -83,12 +86,16 @@
             android:id="@+id/fabPause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:outlineSpotShadowColor="@android:color/white"
+            android:layout_marginEnd="@dimen/margin_50"
+            android:backgroundTint="@android:color/white"
             android:clickable="true"
+            android:elevation="@dimen/margin_0"
             android:focusable="true"
             android:src="@drawable/ic_pause"
             android:visibility="visible"
+            app:backgroundTint="@android:color/black"
+            app:borderWidth="@dimen/margin_2"
+            app:elevation="@dimen/margin_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fabStop"
             app:layout_constraintStart_toStartOf="parent" />
@@ -97,51 +104,19 @@
             android:id="@+id/fabPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="@dimen/margin_50"
+            android:backgroundTint="@android:color/white"
             android:clickable="true"
+            android:elevation="@dimen/margin_0"
             android:focusable="true"
-            android:outlineSpotShadowColor="@android:color/white"
             android:src="@drawable/ic_play"
+            app:backgroundTint="@android:color/black"
+            app:borderWidth="@dimen/margin_2"
+            app:elevation="@dimen/margin_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fabStop"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--        android:id="@+id/fabStop"-->
-    <!--        android:layout_width="56dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_margin="64dp"-->
-    <!--        android:clickable="true"-->
-    <!--        android:focusable="true"-->
-    <!--        android:src="@drawable/ic_stop"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/fabPause"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/fabPause" />-->
-
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--        android:id="@+id/fabPause"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginBottom="80dp"-->
-    <!--        android:clickable="true"-->
-    <!--        android:focusable="true"-->
-    <!--        android:src="@drawable/ic_pause"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--        android:id="@+id/fabPlay"-->
-    <!--        android:visibility="gone"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:clickable="true"-->
-    <!--        android:focusable="true"-->
-    <!--        android:src="@drawable/ic_play"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/fabPause"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/fabPause"-->
-    <!--        app:layout_constraintHorizontal_bias="1.0"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/fabPause"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/fabPause" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
