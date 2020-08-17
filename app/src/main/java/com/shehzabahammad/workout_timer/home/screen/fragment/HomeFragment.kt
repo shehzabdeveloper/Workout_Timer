@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.shehzabahammad.workout_timer.R
-import com.shehzabahammad.workout_timer.home.model.WorkoutSet
+import com.shehzabahammad.workout_timer.home.model.RoutineSet
 import com.shehzabahammad.workout_timer.util.Util.appendZero
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     private var flag = 0
     private var workoutRound = 0
 
-    private val workout: ArrayList<WorkoutSet> = ArrayList()
+    private val workout: ArrayList<RoutineSet> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,9 +70,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun startTimer(wrkSet: WorkoutSet) {
-        tvTitle.text = wrkSet.workoutTitle
-        if (wrkSet.workoutTitle == "Rest") {
+    private fun startTimer(routineSet: RoutineSet) {
+        tvTitle.text = routineSet.workoutTitle
+        if (routineSet.workoutTitle == "Rest") {
             progressBar.indeterminateDrawable.colorFilter = PorterDuffColorFilter(
                 Color.RED,
                 PorterDuff.Mode.SRC_ATOP
@@ -87,11 +87,11 @@ class HomeFragment : Fragment() {
         }
 
         timer = object : CountDownTimer(
-            if (secondsRemaining * 1000 != 0L) secondsRemaining * 1000 else wrkSet.timer * 1000,
+            if (secondsRemaining * 1000 != 0L) secondsRemaining * 1000 else routineSet.timer * 1000,
             1000
         ) {
             override fun onFinish() {
-                workout.remove(wrkSet)
+                workout.remove(routineSet)
                 if (workout.isNotEmpty()) {
                     startTimer(workout[0])
                 } else {
@@ -168,9 +168,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun dummy() {
-        workout.add(WorkoutSet("Pushup", 21))
-        workout.add(WorkoutSet("Rest", 11))
-        workout.add(WorkoutSet("Jump Jack", 21))
-        workout.add(WorkoutSet("Rest", 11))
+        workout.add(RoutineSet("Push Ups", 21))
+        workout.add(RoutineSet("Rest", 11))
+        workout.add(RoutineSet("Jump Jack", 21))
+        workout.add(RoutineSet("Rest", 11))
     }
 }

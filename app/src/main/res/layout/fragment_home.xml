@@ -11,7 +11,7 @@
         android:id="@+id/tvRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_60"
+        android:layout_marginTop="50dp"
         android:text="@string/round"
         android:textColor="@android:color/black"
         android:textSize="@dimen/font_24"
@@ -23,40 +23,42 @@
         android:id="@+id/tvCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_125"
+        android:layout_marginTop="100dp"
         android:text="@string/count_down"
         android:textColor="@android:color/black"
         android:textSize="@dimen/font_48"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRound" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="@dimen/margin_250"
+            android:layout_height="@dimen/margin_200"
+            android:max="100"
+            android:progress="0"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCountDown"
+            app:layout_constraintEnd_toEndOf="@+id/tvCountDown"
+            app:layout_constraintStart_toStartOf="@+id/tvCountDown"
+            app:layout_constraintTop_toTopOf="@+id/tvCountDown" />
+
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_60"
+        android:layout_marginTop="100dp"
         android:text="@string/cool_down"
         android:textColor="@android:color/black"
         android:textSize="@dimen/font_24"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:minWidth="@dimen/margin_250"
-        android:minHeight="@dimen/margin_250"
-        android:progress="0"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCountDown"
-        app:layout_constraintEnd_toEndOf="@+id/tvCountDown"
-        app:layout_constraintStart_toStartOf="@+id/tvCountDown"
-        app:layout_constraintTop_toTopOf="@+id/tvCountDown" />
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCountDown" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
